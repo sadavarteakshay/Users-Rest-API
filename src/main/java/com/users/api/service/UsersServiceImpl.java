@@ -8,7 +8,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
- 
 import com.users.api.dao.UsersRepository;
 import com.users.api.model.Users;
 
@@ -17,16 +16,22 @@ public class UsersServiceImpl implements UserService {
 
 	@Autowired
 	UsersRepository userRepo;
-
 	
-	//Adding New User
+	
+	
+	
+
+	// Adding New User
 	@Override
 	public Users addUser(Users user) {
 
 		return userRepo.save(user);
 	}
 
-	//Updating User
+	
+	
+	
+	// Updating User
 	@Override
 	public Users updateUser(Long uid, Users user) {
 
@@ -69,20 +74,23 @@ public class UsersServiceImpl implements UserService {
 		return userRepo.save(userdb);
 	}
 
+	// Search Users by SearchQuery
 	@Override
-	public List<Users> getUsers(String keyword, int fetchSize ) {
-		 
-		Pageable pageable= PageRequest.ofSize(fetchSize);
-		
-		return userRepo.getUsers(keyword,pageable);
+	public List<Users> getUsers(String keyword, int fetchSize) {
+
+		Pageable pageable = PageRequest.ofSize(fetchSize);
+
+		return userRepo.getUsers(keyword, pageable);
 	}
+
 	
 	
-	
-	
-	
-	
-	
-	
+	// Delete User
+	@Override
+	public void deleteUser(Long uid) {
+
+		userRepo.deleteById(uid);
+
+	}
 
 }

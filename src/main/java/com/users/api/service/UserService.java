@@ -18,4 +18,6 @@ public interface UserService {
 	  
 	  List<Users> getUsers(String keyword, int fetchSize);
 
+	void deleteUser(Long uid);
+
 }
